@@ -11,6 +11,7 @@ pub struct User {
     pub last_name: Option<String>,
     pub name: String,
     pub email: String,
+    pub is_active: Option<bool>
 }
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Deserialize, Serialize)]
@@ -22,7 +23,7 @@ pub struct Model {
     pub last_name: Option<String>,
     pub name: String,
     pub email: String,
-    pub is_active: bool,
+    pub is_active: bool
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
@@ -38,3 +39,21 @@ impl Related<super::user_group::Entity> for Entity {
 }
 
 impl ActiveModelBehavior for ActiveModel {}
+//
+// impl Iden for Column {
+//     fn unquoted(&self, s: &mut dyn std::fmt::Write) {
+//         write!(
+//             s,
+//             "{}",
+//             match self {
+//                 Self::Id => "id",
+//                 Self::FirstName => "first_name",
+//                 Self::last_name => "last_name",
+//                 Self::Name => "name",
+//                 Self::Email => "email",
+//                 Self::is_active => "is_active"
+//             }
+//         )
+//         .unwrap();
+//     }
+// }
